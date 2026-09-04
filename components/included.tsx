@@ -14,6 +14,23 @@ export function Included() {
           <SectionHeading title="Какво е включено" />
         </FadeIn>
 
+        <FadeIn delay={0.08} className="mt-10">
+          <aside className="rounded-2xl border border-stone-200 bg-[#f7f5f1] px-6 py-6 md:px-8 md:py-7">
+            <p className="text-[11px] font-medium tracking-[0.2em] text-stone-500 uppercase">
+              Екип и въвеждане
+            </p>
+            <p className="mt-3 max-w-3xl font-display text-xl leading-snug text-ink md:text-2xl">
+              Персонален Product Owner и обучение за работа в системата
+            </p>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-stone-600 md:text-base">
+              Към проекта назначаваме персонален Product Owner, който води
+              комуникацията с вас през целия процес — от уточненията до
+              приема на фазите. След стартиране провеждаме обучение, за да може
+              екипът ви да работи уверено с конфигуратора и администрацията.
+            </p>
+          </aside>
+        </FadeIn>
+
         <Stagger className="mt-12 grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
           {INCLUDED_ITEMS.map((item) => (
             <StaggerItem key={item}>
