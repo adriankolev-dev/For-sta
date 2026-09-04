@@ -28,7 +28,7 @@ export function FutureExtensions() {
 
         <FadeIn delay={0.12}>
           <p className="mt-10 max-w-2xl text-sm leading-relaxed text-stone-600">
-            Тези функционалности не са включени в инвестицията от €39 500 и могат
+            Тези функционалности не са включени в инвестицията от €46 000 без ДДС и могат
             да бъдат планирани като последващи етапи.
           </p>
         </FadeIn>

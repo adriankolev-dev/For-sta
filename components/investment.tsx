@@ -23,7 +23,7 @@ export function Investment() {
         <FadeIn>
           <SectionHeading
             title="Инвестиция"
-            description="Фиксирана стойност за целия проект, разпределена в плащания по фази — след като можете да прегледате и тествате съответния резултат."
+            description="Фиксирана стойност за целия проект без ДДС, разпределена в плащания по фази — след като можете да прегледате и тествате съответния резултат."
           />
         </FadeIn>
 
@@ -31,7 +31,7 @@ export function Investment() {
           <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white">
             <div className="border-b border-stone-100 bg-gradient-to-br from-[#f7f5f1] to-white px-6 py-12 text-center md:px-10 md:py-16">
               <p className="text-[11px] font-medium tracking-[0.22em] text-stone-500 uppercase">
-                Фиксирана инвестиция за проекта
+                Фиксирана инвестиция за проекта · без ДДС
               </p>
               <motion.p
                 initial={reduce ? false : { opacity: 0, y: 12 }}
@@ -42,6 +42,9 @@ export function Investment() {
               >
                 {formatEur(INVESTMENT_TOTAL)}
               </motion.p>
+              <p className="mt-4 text-sm font-medium text-stone-500">
+                без ДДС
+              </p>
             </div>
 
             <div className="border-b border-stone-100 px-6 py-8 md:px-10">
@@ -124,7 +127,7 @@ export function Investment() {
             <p className="mt-3 max-w-3xl text-base leading-relaxed text-white/90 md:text-lg">
               Инвестицията от{" "}
               <span className="font-semibold text-white">
-                {formatEur(INVESTMENT_TOTAL)}
+                {formatEur(INVESTMENT_TOTAL)} без ДДС
               </span>{" "}
               покрива разработката, дизайна, QA и deployment.
             </p>

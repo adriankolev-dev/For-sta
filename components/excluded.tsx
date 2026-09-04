@@ -12,7 +12,7 @@ export function Excluded() {
         <FadeIn>
           <SectionHeading
             title="Обхват и ограничения"
-            description="Следните функционалности не са включени в инвестицията от €39 500:"
+            description="Следните функционалности не са включени в инвестицията от €46 000 без ДДС:"
           />
         </FadeIn>
 
@@ -47,7 +47,7 @@ export function Excluded() {
             </p>
             <p className="mt-2.5 text-base font-medium leading-snug text-white">
               Инструменти, лицензи, домейн и хостинг не са част от инвестицията
-              от €39 500 и се поемат от клиента.
+              от €46 000 без ДДС и се поемат от клиента.
             </p>
           </aside>
         </FadeIn>

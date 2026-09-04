@@ -80,6 +80,7 @@ export const SCOPE_CLIENT = [
   "цветове",
   "валидация на конфигурацията",
   "визуален preview",
+  "моделиране върху предоставен CAD / изходен файл",
   "динамично ценообразуване",
   "добавяне в количката",
   "checkout",
@@ -117,7 +118,7 @@ export const TIMELINE_PHASES = [
     phase: "Фаза 01",
     title: "Основи и дизайн",
     duration: "1–1,5 месеца",
-    payment: 8000,
+    payment: 9000,
     deploy: "Prototype / design review",
     paymentTrigger: "При старт и одобрение на дизайна",
     outcome:
@@ -139,18 +140,21 @@ export const TIMELINE_PHASES = [
     phase: "Фаза 02",
     title: "Конфигуратор на staging",
     duration: "2,5–3 месеца",
-    payment: 14000,
+    payment: 17000,
     deploy: "Staging Deploy 01",
     paymentTrigger: "При прием след вашия тест на staging",
     outcome:
-      "Работещ конфигуратор с визуализация и динамична цена — готов за реален тест.",
+      "Работещ конфигуратор с визуализация и динамична цена — готов за реален тест. Моделирането се базира на предоставен от вас изходен файл.",
     deliverables: [
+      "избор и приемане на изходен файл за моделиране (CAD или друг съвместим формат)",
+      "3D / продуктово моделиране върху избрания файл",
       "product configurator",
       "визуализация на продукта",
       "валидация на конфигурацията",
       "pricing engine",
     ],
     clientTest: [
+      "потвърждение на избрания CAD / изходен файл за моделиране",
       "конфигуриране на размери и компоненти",
       "проверка на ценовите правила",
       "тест на допустими и блокирани комбинации",
@@ -160,7 +164,7 @@ export const TIMELINE_PHASES = [
     phase: "Фаза 03",
     title: "Поръчки и производство",
     duration: "1,5–2 месеца",
-    payment: 10000,
+    payment: 11000,
     deploy: "Staging Deploy 02",
     paymentTrigger: "При прием след тест на целия order flow",
     outcome:
@@ -181,7 +185,7 @@ export const TIMELINE_PHASES = [
     phase: "Фаза 04",
     title: "Admin, QA и старт",
     duration: "1–1,5 месеца",
-    payment: 7500,
+    payment: 9000,
     deploy: "Production Launch",
     paymentTrigger: "При финален deploy и предаване",
     outcome:
@@ -207,6 +211,7 @@ export const INVESTMENT_ITEMS = [
   { label: "Анализ и техническа спецификация", amount: 2500 },
   { label: "UX/UI дизайн", amount: 3500 },
   { label: "Product Configurator", amount: 11000 },
+  { label: "3D моделиране от CAD / предоставен файл", amount: 7500 },
   { label: "3D визуализация", amount: 4500 },
   { label: "Pricing Engine", amount: 3500 },
   { label: "Cart & Checkout интеграция", amount: 3000 },
@@ -215,7 +220,7 @@ export const INVESTMENT_ITEMS = [
   { label: "QA & Deployment", amount: 2500 },
 ] as const;
 
-export const INVESTMENT_TOTAL = 39500;
+export const INVESTMENT_TOTAL = 46000;
 
 export const PAYMENT_SCHEDULE = TIMELINE_PHASES.map((phase) => ({
   phase: phase.phase,
@@ -232,6 +237,7 @@ export const INCLUDED_ITEMS = [
   "Конфигурационни правила",
   "Динамично ценообразуване",
   "Визуализация на продукта",
+  "3D моделиране от CAD / предоставен файл",
   "Интеграция с количката",
   "Checkout",
   "Конфигурационни данни към поръчката",
