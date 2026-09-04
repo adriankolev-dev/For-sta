@@ -16,6 +16,23 @@ export function FutureExtensions() {
           />
         </FadeIn>
 
+        <FadeIn delay={0.08} className="mt-10">
+          <aside className="rounded-2xl border border-stone-200 bg-white px-6 py-6 md:px-8 md:py-7">
+            <p className="text-[11px] font-medium tracking-[0.2em] text-stone-500 uppercase">
+              След завършване на проекта
+            </p>
+            <p className="mt-3 max-w-3xl font-display text-xl leading-snug text-ink md:text-2xl">
+              Можем да предложим поддръжка след стартиране
+            </p>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-stone-600 md:text-base">
+              След предаването на платформата можем да осигурим продължаваща
+              поддръжка — техническа помощ, корекции, малки подобрения и
+              съдействие при работа със системата. Условията и обхватът се
+              договарят отделно и не са част от инвестицията от €46 000 без ДДС.
+            </p>
+          </aside>
+        </FadeIn>
+
         <Stagger className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {FUTURE_EXTENSIONS.map((item) => (
             <StaggerItem key={item}>

@@ -111,6 +111,7 @@ export const FUTURE_EXTENSIONS = [
   "логистична интеграция",
   "аналитика",
   "разширена производствена автоматизация",
+  "абонаментна поддръжка след стартиране",
 ] as const;
 
 export const TIMELINE_PHASES = [
