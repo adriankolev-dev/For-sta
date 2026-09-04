@@ -1,6 +1,7 @@
 "use client";
 
 import { FadeIn } from "@/components/fade-in";
+import { CONTACT } from "@/lib/data";
 import { scrollToId } from "@/lib/utils";
 
 export function FinalCta() {
@@ -32,19 +33,49 @@ export function FinalCta() {
         </FadeIn>
         <FadeIn delay={0.1}>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/60 md:text-lg">
-            Конфигурируемо, мащабируемо изживяване, което свързва избора на
-            клиента с ясна поръчка и структуриран производствен процес. След
+            Цялостно решение от конфигурация до CNC-готови DXF файлове —
+            валидирано първо с един продукт, после разширено към каталога. След
             завършване можем да предложим и продължаваща поддръжка.
           </p>
         </FadeIn>
         <FadeIn delay={0.18}>
-          <button
-            type="button"
-            onClick={() => scrollToId("investitsiya")}
-            className="mt-10 rounded-full bg-white px-8 py-4 text-sm font-medium text-ink transition-opacity hover:opacity-90"
-          >
-            Да започнем проекта
-          </button>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={CONTACT.emailHref}
+              className="rounded-full bg-white px-8 py-4 text-sm font-medium text-ink transition-opacity hover:opacity-90"
+            >
+              Да започнем проекта
+            </a>
+            <button
+              type="button"
+              onClick={() => scrollToId("investitsiya")}
+              className="rounded-full border border-white/25 px-8 py-4 text-sm font-medium text-white transition-colors hover:border-white/50"
+            >
+              Вижте инвестицията
+            </button>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-md border-t border-white/10 pt-8">
+            <p className="text-[11px] font-medium tracking-[0.2em] text-white/40 uppercase">
+              Контакт
+            </p>
+            <p className="mt-3 font-display text-2xl text-white">{CONTACT.name}</p>
+            <div className="mt-4 flex flex-col items-center gap-2 text-sm text-white/70 sm:flex-row sm:justify-center sm:gap-6">
+              <a
+                href={CONTACT.phoneHref}
+                className="transition-colors hover:text-white"
+              >
+                {CONTACT.phone}
+              </a>
+              <a
+                href={CONTACT.emailHref}
+                className="transition-colors hover:text-white"
+              >
+                {CONTACT.email}
+              </a>
+            </div>
+          </div>
+
           <p className="mt-8 text-[11px] tracking-[0.18em] text-white/35 uppercase">
             adrexio × Forèsta — Дигитален конфигуратор за мебели
           </p>

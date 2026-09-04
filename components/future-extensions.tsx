@@ -11,8 +11,9 @@ export function FutureExtensions() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <FadeIn>
           <SectionHeading
-            eyebrow="Възможна Фаза 2 / Бъдещо развитие"
+            eyebrow="След валидацията"
             title="Създадено да се развива"
+            description="Офертата е цялостното решение. След като потокът за гардероба е валидиран — включително BOM и DXF — добавяме нови продукти и по желание по-дълбоки интеграции."
           />
         </FadeIn>
 

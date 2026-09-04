@@ -1,6 +1,8 @@
 import { FadeIn } from "@/components/fade-in";
 import { FurnitureVisual } from "@/components/furniture-visual";
 import { SectionHeading } from "@/components/section-heading";
+import { MOCK_PRODUCT } from "@/lib/data";
+import { formatEur } from "@/lib/utils";
 
 const FLOW = ["Конфигуратор", "Добави в количката", "Checkout", "Поръчка"] as const;
 
@@ -14,7 +16,7 @@ export function CartCheckout() {
         <FadeIn>
           <SectionHeading
             title="Конфигурацията се превръща в нормална поръчка."
-            description="След като клиентът приключи конфигурирането, продуктът се добавя в количката като стандартен e-commerce продукт."
+            description="След конфигуриране продуктът влиза в количката като стандартен e-commerce артикул — с цялата конфигурация, готова за поръчка и производство."
           />
         </FadeIn>
 
@@ -39,12 +41,12 @@ export function CartCheckout() {
           <div className="grid overflow-hidden rounded-2xl border border-stone-200 bg-[#f7f5f1] lg:grid-cols-[1fr_1.1fr]">
             <div className="border-b border-stone-200 bg-gradient-to-b from-white to-[#ebe7df] p-6 lg:border-r lg:border-b-0 lg:p-8">
               <FurnitureVisual
-                widthCm={120}
-                heightCm={73}
-                depthCm={60}
-                doors={2}
-                drawers={3}
-                backPanel
+                widthCm={MOCK_PRODUCT.widthCm}
+                heightCm={MOCK_PRODUCT.heightCm}
+                depthCm={MOCK_PRODUCT.depthCm}
+                doors={MOCK_PRODUCT.doors}
+                drawers={MOCK_PRODUCT.drawers}
+                backPanel={MOCK_PRODUCT.backPanel}
                 material="byalo"
                 compact
                 showDimensions={false}
@@ -55,29 +57,31 @@ export function CartCheckout() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-[11px] font-medium tracking-[0.2em] text-stone-400 uppercase">
-                    Поръчка #10482
+                    Поръчка {MOCK_PRODUCT.orderId}
                   </p>
                   <h3 className="mt-2 font-display text-2xl text-ink">
-                    Голямо бяло бюро
+                    {MOCK_PRODUCT.name}
                   </h3>
                 </div>
-                <p className="font-display text-2xl text-ink">€1 249</p>
+                <p className="font-display text-2xl text-ink">
+                  {formatEur(MOCK_PRODUCT.price)}
+                </p>
               </div>
 
               <dl className="mt-8 space-y-3 border-t border-stone-100 pt-6 text-sm">
                 <div className="flex justify-between gap-4">
                   <dt className="text-stone-500">Размери</dt>
-                  <dd className="text-ink">120 × 73 × 60 см</dd>
+                  <dd className="text-ink">{MOCK_PRODUCT.dimsLabel}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt className="text-stone-500">Компоненти</dt>
                   <dd className="text-right text-ink">
-                    2 врати · 3 чекмеджета · Заден панел
+                    {MOCK_PRODUCT.componentsLabel}
                   </dd>
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt className="text-stone-500">Материал</dt>
-                  <dd className="text-ink">Бяло</dd>
+                  <dd className="text-ink">{MOCK_PRODUCT.materialLabel}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt className="text-stone-500">Количество</dt>
@@ -85,7 +89,9 @@ export function CartCheckout() {
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt className="text-stone-500">Configuration ID</dt>
-                  <dd className="font-mono text-xs text-ink">CFG-10482-A3</dd>
+                  <dd className="font-mono text-xs text-ink">
+                    {MOCK_PRODUCT.configId}
+                  </dd>
                 </div>
               </dl>
 

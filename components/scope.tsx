@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
-import { FadeIn } from "@/components/fade-in";
+import { FadeIn, Stagger, StaggerItem } from "@/components/fade-in";
 import { SectionHeading } from "@/components/section-heading";
-import { SCOPE_BUSINESS, SCOPE_CLIENT } from "@/lib/data";
+import { MVP_RULES, SCOPE_BUSINESS, SCOPE_CLIENT } from "@/lib/data";
 
 function ScopeList({
   title,
@@ -39,11 +39,32 @@ export function Scope() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <FadeIn>
           <SectionHeading
-            eyebrow="Обхват на MVP"
-            title="Какво включва крайният продукт"
-            description="След четирите фази на разработка получавате цялостното клиентско изживяване — от конфигурирането до поръчката — без излишна сложност."
+            eyebrow="Обхват на решението"
+            title="Цялостна платформа. Валидация с един продукт."
+            description="Офертата покрива пълното решение — включително BOM и DXF за CNC. MVP е само първата доставка: един продукт (гардероб), с който валидираме целия поток преди да добавим останалите."
           />
         </FadeIn>
+
+        <FadeIn delay={0.06}>
+          <p className="mt-8 max-w-3xl rounded-2xl border border-stone-200 bg-[#f7f5f1] px-5 py-4 text-sm leading-relaxed text-stone-600 md:px-6 md:text-base">
+            Инвестицията от €46 000 без ДДС покрива платформата и първия
+            продукт (гардероб) end-to-end. Допълнителни продукти се оценяват
+            отделно след валидацията.
+          </p>
+        </FadeIn>
+
+        <Stagger className="mt-10 grid gap-4 md:grid-cols-3">
+          {MVP_RULES.map((rule) => (
+            <StaggerItem key={rule.title}>
+              <article className="h-full rounded-2xl border border-stone-200 bg-[#f7f5f1] p-6">
+                <h3 className="text-base font-medium text-ink">{rule.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-stone-600">
+                  {rule.description}
+                </p>
+              </article>
+            </StaggerItem>
+          ))}
+        </Stagger>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
           <FadeIn delay={0.08}>

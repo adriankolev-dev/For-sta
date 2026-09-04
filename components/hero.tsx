@@ -2,7 +2,8 @@
 
 import { FadeIn } from "@/components/fade-in";
 import { FurnitureVisual } from "@/components/furniture-visual";
-import { scrollToId } from "@/lib/utils";
+import { MOCK_PRODUCT } from "@/lib/data";
+import { formatEur, scrollToId } from "@/lib/utils";
 
 export function Hero() {
   return (
@@ -11,7 +12,6 @@ export function Hero() {
       className="relative overflow-hidden pt-24 md:pt-28"
       aria-labelledby="hero-title"
     >
-      {/* Atmospheric background */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -49,10 +49,10 @@ export function Hero() {
           </FadeIn>
           <FadeIn delay={0.16}>
             <p className="mt-6 text-base leading-relaxed text-stone-600 md:text-lg">
-              Дигитална платформа, която позволява на клиента да конфигурира,
-              визуализира и поръча мебели по зададени размери — като превръща
-              всяка конфигурация в структурирана поръчка, готова за последваща
-              обработка.
+              Цялостно решение: конфигуратор, поръчки, BOM и DXF изход за CNC.
+              Стартираме с един продукт — гардероб — за да валидираме пълния
+              поток; след това добавяме останалите продукти върху същата
+              платформа.
             </p>
           </FadeIn>
           <FadeIn delay={0.24}>
@@ -66,10 +66,10 @@ export function Hero() {
               </button>
               <button
                 type="button"
-                onClick={() => scrollToId("investitsiya")}
+                onClick={() => scrollToId("obhvat")}
                 className="rounded-full border border-stone-300 bg-white/60 px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-stone-400 hover:bg-white"
               >
-                Вижте инвестицията
+                Вижте обхвата
               </button>
             </div>
           </FadeIn>
@@ -77,24 +77,29 @@ export function Hero() {
 
         <FadeIn delay={0.2} className="relative">
           <div className="relative overflow-hidden rounded-2xl border border-stone-200/80 bg-gradient-to-b from-white to-[#ebe7df] px-4 py-10 shadow-[0_30px_80px_-40px_rgba(40,36,32,0.35)] md:px-8 md:py-14">
+            <p className="mb-2 text-[10px] font-medium tracking-[0.2em] text-stone-400 uppercase">
+              Първи продукт · валидация
+            </p>
             <FurnitureVisual
-              widthCm={120}
-              heightCm={73}
-              depthCm={60}
-              doors={2}
-              drawers={3}
-              backPanel
+              widthCm={MOCK_PRODUCT.widthCm}
+              heightCm={MOCK_PRODUCT.heightCm}
+              depthCm={MOCK_PRODUCT.depthCm}
+              doors={MOCK_PRODUCT.doors}
+              drawers={MOCK_PRODUCT.drawers}
+              backPanel={MOCK_PRODUCT.backPanel}
               material="byalo"
               showDimensions
             />
             <div className="mt-4 flex flex-wrap items-end justify-between gap-3 border-t border-stone-200/80 pt-5">
               <div>
-                <p className="text-sm font-medium text-ink">Голямо бяло бюро</p>
+                <p className="text-sm font-medium text-ink">{MOCK_PRODUCT.name}</p>
                 <p className="mt-1 text-xs tracking-wide text-stone-500">
-                  120 × 73 × 60 см · 2 врати · 3 чекмеджета
+                  {MOCK_PRODUCT.dimsLabel} · {MOCK_PRODUCT.componentsLabel}
                 </p>
               </div>
-              <p className="font-display text-2xl text-ink">€1 249</p>
+              <p className="font-display text-2xl text-ink">
+                {formatEur(MOCK_PRODUCT.price)}
+              </p>
             </div>
           </div>
         </FadeIn>

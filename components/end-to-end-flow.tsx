@@ -17,7 +17,7 @@ export function EndToEndFlow() {
         <FadeIn>
           <SectionHeading
             title="От избора до производството"
-            description="Пълният customer journey — от първия избор до структурирана поръчка за производство."
+            description="Пълният customer journey — от първия избор до поръчка с BOM и DXF файлове за CNC."
           />
         </FadeIn>
 

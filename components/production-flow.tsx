@@ -1,11 +1,11 @@
 import { FadeIn, Stagger, StaggerItem } from "@/components/fade-in";
 import { SectionHeading } from "@/components/section-heading";
-import { PRODUCTION_CARDS } from "@/lib/data";
+import { MOCK_PRODUCT, PRODUCTION_CARDS } from "@/lib/data";
 
 const FLOW = [
   "Клиентска конфигурация",
   "E-commerce поръчка",
-  "Производствена информация",
+  "BOM + DXF за CNC",
 ] as const;
 
 export function ProductionFlow() {
@@ -18,7 +18,7 @@ export function ProductionFlow() {
         <FadeIn>
           <SectionHeading
             title="Всяка поръчка носи своята конфигурация."
-            description="Клиентът не купува просто стандартен SKU. В поръчката се записва точната конфигурация, която е създал."
+            description="Клиентът не купува просто стандартен SKU. В поръчката влизат точната конфигурация, BOM и DXF панели за CNC."
           />
         </FadeIn>
 
@@ -58,11 +58,11 @@ export function ProductionFlow() {
                     Производствена спецификация
                   </p>
                   <h3 className="mt-2 font-display text-xl text-ink">
-                    BOM · Поръчка #10482
+                    BOM + DXF · {MOCK_PRODUCT.orderId}
                   </h3>
                 </div>
                 <span className="rounded-full bg-[#f7f5f1] px-3 py-1 text-[11px] tracking-wide text-stone-500 uppercase">
-                  Фаза 1
+                  CNC ready
                 </span>
               </div>
 
@@ -70,17 +70,19 @@ export function ProductionFlow() {
                 <p>
                   <span className="text-stone-400">ПРОДУКТ</span>
                   <br />
-                  Голямо бяло бюро · CFG-10482-A3
+                  {MOCK_PRODUCT.name} · {MOCK_PRODUCT.configId}
                 </p>
                 <p>
                   <span className="text-stone-400">РАЗМЕРИ</span>
                   <br />
-                  W 1200 × H 730 × D 600 mm
+                  W {MOCK_PRODUCT.widthCm * 10} × H {MOCK_PRODUCT.heightCm * 10} ×
+                  D {MOCK_PRODUCT.depthCm * 10} mm
                 </p>
                 <p>
                   <span className="text-stone-400">ДЕТАЙЛИ</span>
                   <br />
-                  Корпус × 1 · Врата × 2 · Чекмедже × 3 · Заден панел × 1
+                  Корпус × 1 · Врата × {MOCK_PRODUCT.doors} · Чекмедже ×{" "}
+                  {MOCK_PRODUCT.drawers} · Заден панел × 1
                 </p>
                 <p>
                   <span className="text-stone-400">МАТЕРИАЛ / КАНТ</span>
@@ -88,9 +90,9 @@ export function ProductionFlow() {
                   ПДЧ бяло мат 18 mm · ABS кант 1 mm бяло
                 </p>
                 <p>
-                  <span className="text-stone-400">ОБКОВ</span>
+                  <span className="text-stone-400">DXF ЗА CNC</span>
                   <br />
-                  Панти × 4 · Водачи × 3 · Дръжки × 5
+                  panel_side_L.dxf · panel_door_01.dxf · panel_door_02.dxf · …
                 </p>
               </div>
             </article>
@@ -99,9 +101,11 @@ export function ProductionFlow() {
 
         <FadeIn delay={0.16}>
           <p className="mt-12 max-w-3xl text-sm leading-relaxed text-stone-600 md:text-base">
-            Производствената информация се структурира така, че в следващ етап да
-            могат да бъдат добавени ERP, CAD/CAM или CNC интеграции без
-            необходимост от изграждане на клиентското изживяване отначало.
+            Системата генерира BOM и DXF файлове на панелите — стандартният
+            формат за CNC работния процес. Това е част от цялостното решение;
+            в MVP го валидираме върху гардероба, след което го прилагаме и към
+            следващите продукти. Интеграция с конкретен машинен софтуер и
+            nesting остават отделни етапи при нужда.
           </p>
         </FadeIn>
       </div>

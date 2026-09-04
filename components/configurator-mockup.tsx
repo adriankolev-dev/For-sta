@@ -7,6 +7,7 @@ import { FurnitureVisual } from "@/components/furniture-visual";
 import { SectionHeading } from "@/components/section-heading";
 import {
   MATERIALS,
+  MOCK_PRODUCT,
   calculateConfigPrice,
 } from "@/lib/data";
 import { formatEur } from "@/lib/utils";
@@ -58,12 +59,12 @@ function Segmented<T extends string | number | boolean>({
 
 export function ConfiguratorMockup() {
   const reduce = useReducedMotion();
-  const [width, setWidth] = useState(120);
-  const [height, setHeight] = useState(73);
-  const [depth, setDepth] = useState(60);
-  const [doors, setDoors] = useState(2);
-  const [drawers, setDrawers] = useState(3);
-  const [backPanel, setBackPanel] = useState(true);
+  const [width, setWidth] = useState<number>(MOCK_PRODUCT.widthCm);
+  const [height, setHeight] = useState<number>(MOCK_PRODUCT.heightCm);
+  const [depth, setDepth] = useState<number>(MOCK_PRODUCT.depthCm);
+  const [doors, setDoors] = useState<number>(MOCK_PRODUCT.doors);
+  const [drawers, setDrawers] = useState<number>(MOCK_PRODUCT.drawers);
+  const [backPanel, setBackPanel] = useState<boolean>(MOCK_PRODUCT.backPanel);
   const [material, setMaterial] = useState<MaterialId>("byalo");
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
@@ -96,9 +97,9 @@ export function ConfiguratorMockup() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <FadeIn>
           <SectionHeading
-            eyebrow="Конфигуратор"
+            eyebrow="Конфигуратор · демо гардероб"
             title="Сърцето на изживяването"
-            description="Интерактивна демонстрация на клиентското изживяване — конфигурирайте продукта и вижте как се променят визуализацията и цената."
+            description="Демонстрация на end-to-end логиката за един продукт — гардероб. Конфигурирайте и вижте как се променят визуализацията и цената."
           />
         </FadeIn>
 
@@ -108,10 +109,10 @@ export function ConfiguratorMockup() {
               {/* Controls */}
               <div className="border-b border-stone-200 p-6 md:p-8 lg:border-r lg:border-b-0">
                 <p className="text-[11px] font-medium tracking-[0.2em] text-stone-400 uppercase">
-                  Конфигурация
+                  Конфигурация · първи продукт
                 </p>
                 <h3 className="mt-2 font-display text-2xl text-ink">
-                  Голямо бяло бюро
+                  {MOCK_PRODUCT.name}
                 </h3>
 
                 <div className="mt-8 space-y-7">
@@ -119,8 +120,8 @@ export function ConfiguratorMockup() {
                     <FieldLabel>Ширина — {width} см</FieldLabel>
                     <input
                       type="range"
-                      min={80}
-                      max={180}
+                      min={140}
+                      max={220}
                       step={10}
                       value={width}
                       onChange={(e) => setWidth(Number(e.target.value))}
@@ -128,8 +129,8 @@ export function ConfiguratorMockup() {
                       aria-label="Ширина в сантиметри"
                     />
                     <div className="mt-1 flex justify-between text-[11px] text-stone-400">
-                      <span>80</span>
-                      <span>180</span>
+                      <span>140</span>
+                      <span>220</span>
                     </div>
                   </div>
 
@@ -137,28 +138,36 @@ export function ConfiguratorMockup() {
                     <FieldLabel>Височина — {height} см</FieldLabel>
                     <input
                       type="range"
-                      min={60}
-                      max={90}
-                      step={1}
+                      min={180}
+                      max={250}
+                      step={5}
                       value={height}
                       onChange={(e) => setHeight(Number(e.target.value))}
                       className="w-full accent-ink"
                       aria-label="Височина в сантиметри"
                     />
+                    <div className="mt-1 flex justify-between text-[11px] text-stone-400">
+                      <span>180</span>
+                      <span>250</span>
+                    </div>
                   </div>
 
                   <div>
                     <FieldLabel>Дълбочина — {depth} см</FieldLabel>
                     <input
                       type="range"
-                      min={40}
-                      max={80}
+                      min={55}
+                      max={70}
                       step={5}
                       value={depth}
                       onChange={(e) => setDepth(Number(e.target.value))}
                       className="w-full accent-ink"
                       aria-label="Дълбочина в сантиметри"
                     />
+                    <div className="mt-1 flex justify-between text-[11px] text-stone-400">
+                      <span>55</span>
+                      <span>70</span>
+                    </div>
                   </div>
 
                   <div>
