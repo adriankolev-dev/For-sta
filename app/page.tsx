@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer";
 import { FutureExtensions } from "@/components/future-extensions";
 import { Hero } from "@/components/hero";
 import { Included } from "@/components/included";
+import { IntroReveal } from "@/components/intro-reveal";
 import { Investment } from "@/components/investment";
 import { Navbar } from "@/components/navbar";
 import { Opportunity } from "@/components/opportunity";
@@ -22,6 +23,7 @@ import { Timeline } from "@/components/timeline";
 export default function HomePage() {
   return (
     <>
+      <IntroReveal />
       <Navbar />
       <main>
         <Hero />

@@ -31,9 +31,9 @@ section[id] {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
+  *:not([class^="foresta-intro"]):not([class*=" foresta-intro"]),
+  *:not([class^="foresta-intro"]):not([class*=" foresta-intro"])::before,
+  *:not([class^="foresta-intro"]):not([class*=" foresta-intro"])::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -92,4 +92,160 @@ input[type="range"]::-moz-range-thumb {
 :focus-visible {
   outline: 2px solid #1c1917;
   outline-offset: 3px;
+}
+
+/* —— Intro reveal (logo → curtain split) —— */
+html.foresta-intro-active {
+  overflow: hidden;
+}
+
+.foresta-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.foresta-intro__panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #0c0b0a;
+  will-change: transform;
+}
+
+.foresta-intro__panel--left {
+  left: 0;
+  width: calc(50% + 2px);
+  animation: foresta-curtain-left 1.2s cubic-bezier(0.76, 0, 0.24, 1) 2.1s
+    forwards;
+}
+
+.foresta-intro__panel--right {
+  right: 0;
+  width: calc(50% + 2px);
+  animation: foresta-curtain-right 1.2s cubic-bezier(0.76, 0, 0.24, 1) 2.1s
+    forwards;
+}
+
+.foresta-intro__brand {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.5rem;
+  opacity: 1;
+  animation:
+    foresta-intro-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both,
+    foresta-intro-out 0.4s ease 2s forwards;
+}
+
+.foresta-intro__logo {
+  width: min(42vw, 180px);
+  height: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .foresta-intro__logo {
+    width: 200px;
+  }
+}
+
+.foresta-intro__label {
+  margin-top: 2rem;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+@media (min-width: 768px) {
+  .foresta-intro__label {
+    font-size: 11px;
+  }
+}
+
+.foresta-intro__line {
+  margin-top: 1.25rem;
+  height: 1px;
+  width: 4rem;
+  background: rgba(255, 255, 255, 0.35);
+  transform-origin: center;
+  animation: foresta-intro-line 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+}
+
+@keyframes foresta-intro-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes foresta-intro-out {
+  to {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes foresta-intro-line {
+  from {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes foresta-curtain-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes foresta-curtain-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .foresta-intro__panel--left {
+    animation-delay: 0.7s !important;
+    animation-duration: 0.25s !important;
+  }
+
+  .foresta-intro__panel--right {
+    animation-delay: 0.7s !important;
+    animation-duration: 0.25s !important;
+  }
+
+  .foresta-intro__brand {
+    animation:
+      foresta-intro-in 0.01ms both,
+      foresta-intro-out 0.2s ease 0.65s forwards !important;
+  }
+
+  .foresta-intro__line {
+    animation: none !important;
+    transform: scaleX(1);
+  }
 }
