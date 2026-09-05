@@ -3,25 +3,30 @@
 import { useEffect, useState } from "react";
 
 /**
- * Forèsta logo curtain reveal — CSS timeline on first paint.
+ * adrexio logo curtain reveal — CSS timeline on first paint.
  */
 export function IntroReveal() {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.add("foresta-intro-active");
+    const root = document.documentElement;
+    root.classList.add("foresta-intro-active");
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const total = reduce ? 1200 : 3400;
+    const total = reduce ? 900 : 2300;
 
-    const timer = window.setTimeout(() => {
+    const finish = () => {
       setDone(true);
-      document.documentElement.classList.remove("foresta-intro-active");
-    }, total);
+      root.classList.remove("foresta-intro-active");
+      root.style.overflow = "";
+    };
+
+    const timer = window.setTimeout(finish, total);
 
     return () => {
       window.clearTimeout(timer);
-      document.documentElement.classList.remove("foresta-intro-active");
+      root.classList.remove("foresta-intro-active");
+      root.style.overflow = "";
     };
   }, []);
 
@@ -34,10 +39,10 @@ export function IntroReveal() {
       <div className="foresta-intro__brand">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/logos/foresta-on-dark.webp"
+          src="/logos/adrexio.svg"
           alt=""
-          width={200}
-          height={200}
+          width={280}
+          height={60}
           className="foresta-intro__logo"
           decoding="async"
         />

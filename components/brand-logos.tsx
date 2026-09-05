@@ -17,13 +17,16 @@ export function BrandLogos({
 
   return (
     <div
-      className={cn("flex items-center gap-2.5 sm:gap-3", className)}
+      className={cn(
+        "flex min-w-0 max-w-[calc(100vw-5.5rem)] items-center gap-2 sm:max-w-none sm:gap-3",
+        className,
+      )}
       aria-label="adrexio × Forèsta"
     >
       <AdrexioMark
         dark={isDark}
         className={cn(
-          size === "sm" && "h-6 sm:h-7",
+          size === "sm" && "h-5 max-w-[88px] sm:h-7 sm:max-w-none",
           size === "md" && "h-8",
           size === "lg" && "h-10",
         )}
@@ -31,7 +34,7 @@ export function BrandLogos({
       <span
         aria-hidden
         className={cn(
-          "text-sm font-light",
+          "shrink-0 text-sm font-light",
           isDark ? "text-white/30" : "text-stone-300",
         )}
       >
@@ -57,9 +60,9 @@ export function AdrexioMark({
       width={140}
       height={30}
       className={cn(
-        "h-7 w-auto object-contain object-left",
+        "w-auto object-contain object-left",
         dark && "brightness-0 invert",
-        className,
+        className ?? "h-7",
       )}
     />
   );
@@ -76,7 +79,7 @@ export function ForestaMark({
 }) {
   const dims =
     size === "sm"
-      ? { h: "h-9 sm:h-10", w: 52, hPx: 44 }
+      ? { h: "h-8 sm:h-10", w: 48, hPx: 40 }
       : size === "md"
         ? { h: "h-11", w: 64, hPx: 54 }
         : { h: "h-14", w: 80, hPx: 68 };

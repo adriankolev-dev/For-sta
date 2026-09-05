@@ -56,10 +56,10 @@ export function FurnitureVisual({
   const handle = isDark ? "#c8c8c4" : "#8a8a86";
   const gap = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)";
 
-  // Scale visual proportions relative to default 120×73×60
-  const scaleW = Math.min(1.15, Math.max(0.75, widthCm / 120));
-  const scaleH = Math.min(1.12, Math.max(0.8, heightCm / 73));
-  const scaleD = Math.min(1.1, Math.max(0.85, depthCm / 60));
+  // Scale relative to wardrobe demo defaults (180 × 220 × 60)
+  const scaleW = widthCm / 180;
+  const scaleH = heightCm / 220;
+  const scaleD = depthCm / 60;
 
   const doorCount = Math.max(0, Math.min(3, doors));
   const drawerCount = Math.max(0, Math.min(4, drawers));
@@ -67,8 +67,8 @@ export function FurnitureVisual({
   return (
     <div
       className={cn(
-        "relative flex items-center justify-center",
-        compact ? "min-h-[220px]" : "min-h-[320px] md:min-h-[420px]",
+        "relative flex w-full items-center justify-center overflow-x-clip",
+        compact ? "min-h-[200px]" : "min-h-[280px] sm:min-h-[320px] md:min-h-[420px]",
         className,
       )}
     >
@@ -79,10 +79,12 @@ export function FurnitureVisual({
       />
 
       <div
-        className="relative transition-all duration-500 ease-out"
+        className="furniture-stage relative mx-auto w-full max-w-[min(100%,260px)] transition-all duration-500 ease-out sm:max-w-[300px] md:max-w-[340px]"
         style={{
-          width: compact ? `${200 * scaleW}px` : `${Math.min(340, 280 * scaleW)}px`,
-          transform: `perspective(900px) rotateY(-18deg) rotateX(6deg) scale(${scaleD})`,
+          width: compact
+            ? `${Math.min(180, 160 * scaleW)}px`
+            : `${Math.min(340, 260 * scaleW)}px`,
+          transform: `perspective(900px) rotateY(-14deg) rotateX(5deg) scale(${0.92 + scaleD * 0.08})`,
           transformStyle: "preserve-3d",
         }}
       >
@@ -102,7 +104,7 @@ export function FurnitureVisual({
         <div
           className="relative overflow-hidden rounded-[3px] transition-all duration-500"
           style={{
-            height: compact ? `${150 * scaleH}px` : `${210 * scaleH}px`,
+            height: compact ? `${180 * scaleH}px` : `${240 * scaleH}px`,
             background: mat.face,
             boxShadow: `
               14px 18px 40px ${mat.shadow},
@@ -216,13 +218,13 @@ export function FurnitureVisual({
 
       {showDimensions && !compact ? (
         <>
-          <span className="absolute top-[10%] left-[4%] hidden text-[10px] tracking-[0.18em] text-stone-400 uppercase md:block">
+          <span className="absolute top-[10%] left-[2%] hidden text-[10px] tracking-[0.18em] text-stone-400 uppercase sm:block">
             {widthCm * 10} mm
           </span>
-          <span className="absolute right-[4%] bottom-[28%] hidden text-[10px] tracking-[0.18em] text-stone-400 uppercase md:block">
+          <span className="absolute right-[2%] bottom-[28%] hidden text-[10px] tracking-[0.18em] text-stone-400 uppercase sm:block">
             {heightCm * 10} mm
           </span>
-          <span className="absolute bottom-[8%] left-1/2 -translate-x-1/2 text-[10px] tracking-[0.18em] text-stone-400 uppercase">
+          <span className="absolute bottom-[6%] left-1/2 -translate-x-1/2 text-[10px] tracking-[0.18em] text-stone-400 uppercase">
             {depthCm * 10} mm
           </span>
         </>

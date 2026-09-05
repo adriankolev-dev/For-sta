@@ -49,10 +49,9 @@ export function Hero() {
           </FadeIn>
           <FadeIn delay={0.16}>
             <p className="mt-6 text-base leading-relaxed text-stone-600 md:text-lg">
-              Цялостно решение: конфигуратор, поръчки, BOM и DXF изход за CNC.
-              Стартираме с един продукт — гардероб — за да валидираме пълния
-              поток; след това добавяме останалите продукти върху същата
-              платформа.
+              Цялостно решение: конфигуратор, поръчки, BOM, DXF за CNC и
+              възможност да добавяте продукти в каталога. Стартираме с гардероб
+              end-to-end, за да валидираме пълния поток.
             </p>
           </FadeIn>
           <FadeIn delay={0.24}>
@@ -76,7 +75,7 @@ export function Hero() {
         </div>
 
         <FadeIn delay={0.2} className="relative">
-          <div className="relative overflow-hidden rounded-2xl border border-stone-200/80 bg-gradient-to-b from-white to-[#ebe7df] px-4 py-10 shadow-[0_30px_80px_-40px_rgba(40,36,32,0.35)] md:px-8 md:py-14">
+          <div className="relative overflow-hidden rounded-2xl border border-stone-200/80 bg-gradient-to-b from-white to-[#ebe7df] px-3 py-8 shadow-[0_30px_80px_-40px_rgba(40,36,32,0.35)] sm:px-4 sm:py-10 md:px-8 md:py-14">
             <p className="mb-2 text-[10px] font-medium tracking-[0.2em] text-stone-400 uppercase">
               Първи продукт · валидация
             </p>
@@ -91,13 +90,13 @@ export function Hero() {
               showDimensions
             />
             <div className="mt-4 flex flex-wrap items-end justify-between gap-3 border-t border-stone-200/80 pt-5">
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="text-sm font-medium text-ink">{MOCK_PRODUCT.name}</p>
-                <p className="mt-1 text-xs tracking-wide text-stone-500">
+                <p className="mt-1 text-xs leading-relaxed tracking-wide text-stone-500">
                   {MOCK_PRODUCT.dimsLabel} · {MOCK_PRODUCT.componentsLabel}
                 </p>
               </div>
-              <p className="font-display text-2xl text-ink">
+              <p className="shrink-0 font-display text-2xl text-ink">
                 {formatEur(MOCK_PRODUCT.price)}
               </p>
             </div>

@@ -221,32 +221,32 @@ export function ConfiguratorMockup() {
                 </div>
 
                 <div className="mt-10 border-t border-stone-100 pt-6">
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <p className="text-[11px] tracking-[0.16em] text-stone-400 uppercase">
-                        Цена
-                      </p>
-                      <AnimatePresence mode="wait">
-                        <motion.p
-                          key={price}
-                          initial={reduce ? false : { opacity: 0, y: 6 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={reduce ? undefined : { opacity: 0, y: -6 }}
-                          transition={{ duration: 0.25 }}
-                          className="font-display text-3xl text-ink"
-                        >
-                          {formatEur(price)}
-                        </motion.p>
-                      </AnimatePresence>
+                    <div className="flex flex-wrap items-end justify-between gap-3">
+                      <div>
+                        <p className="text-[11px] tracking-[0.16em] text-stone-400 uppercase">
+                          Цена
+                        </p>
+                        <AnimatePresence mode="wait">
+                          <motion.p
+                            key={price}
+                            initial={reduce ? false : { opacity: 0, y: 6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={reduce ? undefined : { opacity: 0, y: -6 }}
+                            transition={{ duration: 0.25 }}
+                            className="font-display text-3xl text-ink"
+                          >
+                            {formatEur(price)}
+                          </motion.p>
+                        </AnimatePresence>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleAdd}
+                        className="w-full rounded-full bg-ink px-5 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:w-auto"
+                      >
+                        {added ? "Добавено" : "Добави в количката"}
+                      </button>
                     </div>
-                    <button
-                      type="button"
-                      onClick={handleAdd}
-                      className="rounded-full bg-ink px-5 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
-                    >
-                      {added ? "Добавено" : "Добави в количката"}
-                    </button>
-                  </div>
                   <p className="mt-3 text-xs text-stone-400">
                     Демонстрационни стойности · не е реална поръчка
                   </p>

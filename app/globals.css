@@ -20,6 +20,16 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
 
 section[id] {
@@ -40,14 +50,6 @@ section[id] {
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-manrope), system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 .font-display {
   font-family: var(--font-display), Georgia, "Times New Roman", serif;
 }
@@ -57,34 +59,49 @@ body {
   color: #f7f5f1;
 }
 
-/* Range input polish */
+/* Range input — tall hit area, thin visual track */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
+  width: 100%;
+  height: 28px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
   height: 2px;
   background: #d6d3d1;
   border-radius: 999px;
-  outline: none;
 }
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
+  margin-top: -8px;
   border-radius: 999px;
   background: #1c1917;
-  cursor: pointer;
+  cursor: grab;
   border: 2px solid #f7f5f1;
   box-shadow: 0 0 0 1px #1c1917;
 }
 
+input[type="range"]::-moz-range-track {
+  height: 2px;
+  background: #d6d3d1;
+  border-radius: 999px;
+}
+
 input[type="range"]::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-radius: 999px;
   background: #1c1917;
-  cursor: pointer;
+  cursor: grab;
   border: 2px solid #f7f5f1;
   box-shadow: 0 0 0 1px #1c1917;
 }
@@ -113,21 +130,21 @@ html.foresta-intro-active {
   position: absolute;
   top: 0;
   bottom: 0;
-  background: #0c0b0a;
+  background: #f7f5f1;
   will-change: transform;
 }
 
 .foresta-intro__panel--left {
   left: 0;
   width: calc(50% + 2px);
-  animation: foresta-curtain-left 1.2s cubic-bezier(0.76, 0, 0.24, 1) 2.1s
+  animation: foresta-curtain-left 1s cubic-bezier(0.76, 0, 0.24, 1) 1.1s
     forwards;
 }
 
 .foresta-intro__panel--right {
   right: 0;
   width: calc(50% + 2px);
-  animation: foresta-curtain-right 1.2s cubic-bezier(0.76, 0, 0.24, 1) 2.1s
+  animation: foresta-curtain-right 1s cubic-bezier(0.76, 0, 0.24, 1) 1.1s
     forwards;
 }
 
@@ -139,20 +156,19 @@ html.foresta-intro-active {
   align-items: center;
   padding: 0 1.5rem;
   opacity: 1;
-  animation:
-    foresta-intro-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both,
-    foresta-intro-out 0.4s ease 2s forwards;
+  /* Single keyframe timeline — dual animations glitch on iOS Safari */
+  animation: foresta-brand-sequence 2.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .foresta-intro__logo {
-  width: min(42vw, 180px);
+  width: min(70vw, 220px);
   height: auto;
   object-fit: contain;
 }
 
 @media (min-width: 768px) {
   .foresta-intro__logo {
-    width: 200px;
+    width: 260px;
   }
 }
 
@@ -162,7 +178,7 @@ html.foresta-intro-active {
   font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(28, 25, 23, 0.45);
 }
 
 @media (min-width: 768px) {
@@ -175,26 +191,27 @@ html.foresta-intro-active {
   margin-top: 1.25rem;
   height: 1px;
   width: 4rem;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(28, 25, 23, 0.3);
   transform-origin: center;
-  animation: foresta-intro-line 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+  animation: foresta-intro-line 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
 }
 
-@keyframes foresta-intro-in {
-  from {
+@keyframes foresta-brand-sequence {
+  0% {
     opacity: 0;
-    transform: scale(0.92);
+    transform: scale(0.94);
   }
-  to {
+  20% {
     opacity: 1;
     transform: scale(1);
   }
-}
-
-@keyframes foresta-intro-out {
-  to {
+  68% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
     opacity: 0;
-    transform: scale(1.06);
+    transform: scale(1.04);
   }
 }
 
@@ -229,19 +246,17 @@ html.foresta-intro-active {
 
 @media (prefers-reduced-motion: reduce) {
   .foresta-intro__panel--left {
-    animation-delay: 0.7s !important;
+    animation-delay: 0.5s !important;
     animation-duration: 0.25s !important;
   }
 
   .foresta-intro__panel--right {
-    animation-delay: 0.7s !important;
+    animation-delay: 0.5s !important;
     animation-duration: 0.25s !important;
   }
 
   .foresta-intro__brand {
-    animation:
-      foresta-intro-in 0.01ms both,
-      foresta-intro-out 0.2s ease 0.65s forwards !important;
+    animation: foresta-brand-sequence 0.9s ease forwards !important;
   }
 
   .foresta-intro__line {
